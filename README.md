@@ -32,17 +32,21 @@ Navigate to the Project Directory
 
 
 cd pizza-paradise
+
 2. **Install Dependencies**
 
 Ensure you have Node.js and npm installed. Then run:
 
  npm install
+ 
 3.**Install Material-UI**
 
 Install the core and icon packages for Material-UI:
 
 npm install @mui/material @emotion/react @emotion/styled
+
 npm install @mui/icons-material
+
 4. **Start the Development Server**
 npm start
 The application will be available at http://localhost:3000.
@@ -58,6 +62,7 @@ Usage
 Add Pizza: Navigate to the "Order Page" and use the "Add Pizza" button to customize your orders.
 Manage Orders: Access the management interface to view and edit orders.
 View Details: Click the "View" button to see detailed information about each order.
+
 License
 This project is licensed under the MIT License. See the LICENSE file for more information.
 
