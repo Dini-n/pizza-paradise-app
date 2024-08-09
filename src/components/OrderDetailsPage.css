@@ -1,0 +1,72 @@
+.container {
+    flex-grow: 1;
+    direction: rtl;
+    margin-top: 60px;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .page-title {
+    text-align: center;
+  }
+  
+  .customer-info {
+    text-align: center;
+  }
+  
+  .order-price {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .pizza-details {
+    margin-bottom: 40px;
+  }
+  
+  .pizza-info {
+    margin-bottom: 10px;
+    
+  }
+  
+  .pizza-avatar {
+    width: 150px;
+    height: 120px;
+  }
+  
+  .pizza-quantity {
+    margin-top: 10px;
+  }
+  
+  .topping-card {
+    max-width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .topping-avatar {
+    width: 80px;
+    height: 70px;
+    margin: auto;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    background-color: #ff9800 !important; /* צבע הרקע הרצוי */
+
+    background-color: #ffb74d !important;
+  }
+  
+  .button:hover {
+    background-color: #ff9800 !important;
+  }
+  

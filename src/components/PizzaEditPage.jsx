@@ -7,6 +7,8 @@ import { selectPizzaSizes, selectToppings, selectPriceToping } from '../redux/sl
 import { Add, Remove } from '@mui/icons-material';
 import { imgUrl } from '../config';
 
+import './PizzaEditPage.css'; // Import the CSS file
+
 const PizzaEditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -85,34 +87,17 @@ const PizzaEditPage = () => {
   };
 
   return (
-    <Container style={{ padding: '20px', backgroundColor: '#f5f5f5', marginTop: '60px' }}>
-      <Box
-        sx={{
-          padding: '40px',
-          borderRadius: '10px',
-          backgroundColor: '#fff', // Adjust as needed
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-          textAlign: 'center',
-          color: '#333',
-        }}
-      >
+    <Container className="pizza-edit-container">
+      <Box className="pizza-edit-box">
         <Typography variant="h4" component="div" gutterBottom>
           {id ? 'עריכת פיצה' : 'הוספת פיצה חדשה'}
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '20px', marginBottom: '20px', direction: 'rtl' }}>
+        <Box className="pizza-size-selection">
           {pizzaSizes.map(pizzaSize => (
             <Card
               key={pizzaSize.id}
-              sx={{
-                maxWidth: 345,
-                cursor: 'pointer',
-                border: selectedPizza.size === pizzaSize.size ? '2px solid #e91e63' : 'none',
-                transition: 'border-color 0.3s',
-                '&:hover': {
-                  borderColor: '#e91e63'
-                }
-              }}
+              className={`pizza-card ${selectedPizza.size === pizzaSize.size ? 'selected' : ''}`}
               onClick={() => handlePizzaSelect(pizzaSize)}
             >
               <CardMedia
@@ -129,7 +114,7 @@ const PizzaEditPage = () => {
           ))}
         </Box>
 
-        <FormGroup sx={{ direction: 'rtl' }}>
+        <FormGroup className="topping-group">
           {toppings.map(topping => (
             <FormControlLabel
               key={topping.id}
@@ -138,21 +123,14 @@ const PizzaEditPage = () => {
                   checked={selectedToppingsList.includes(topping.id)}
                   onChange={handleToppingChange}
                   value={topping.id}
-                  sx={{
-                    color: '#e91e63',
-                    '&.Mui-checked': {
-                      color: '#e91e63',
-                    },
-                  }}
                 />
               }
-              label={<Box sx={{ display: 'flex', alignItems: 'center' }}>
+              label={<Box className="topping-label">
                 <CardMedia
                   component="img"
                   height="50"
                   image={`${imgUrl}/${topping.image}`}
                   alt={topping.name}
-                  sx={{ marginRight: '10px' }}
                 />
                 {topping.name}
               </Box>}
@@ -163,38 +141,25 @@ const PizzaEditPage = () => {
         <Typography variant="h6" component="div" gutterBottom>
           סה"כ כולל תוספות: ₪{calculateTotalPrice()}
         </Typography>
-        <Box sx={{ display: 'flex', alignItems: 'center', direction: 'rtl' }}>
+        <Box className="quantity-controls">
           <IconButton onClick={() => handleQuantityChange(-1)}><Remove /></IconButton>
-          <Typography sx={{ marginX: 2 }}>{quantity}</Typography>
+          <Typography className="quantity-display">{quantity}</Typography>
           <IconButton onClick={() => handleQuantityChange(1)}><Add /></IconButton>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
+        <Box className="action-buttons">
           <Button
             onClick={handleCancel}
             variant="outlined"
-            color="error"
-            sx={{
-              borderColor: '#e91e63',
-              color: '#e91e63',
-              '&:hover': {
-                borderColor: '#d81b60',
-                color: '#d81b60',
-              },
-            }}
+            color="warning"
+            className="cancel-button"
           >
             ביטול
           </Button>
           <Button
             onClick={handleSave}
             variant="contained"
-            color="primary"
-            sx={{
-              backgroundColor: '#e91e63',
-              color: '#fff',
-              '&:hover': {
-                backgroundColor: '#d81b60',
-              },
-            }}
+            color="warning"
+            className="save-button"
           >
             {id ? 'שמור' : 'הוסף פיצה'}
           </Button>

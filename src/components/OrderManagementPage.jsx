@@ -1,4 +1,3 @@
-// src/components/OrderManagementPage.jsx
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -12,22 +11,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { selectAllOrders } from '../redux/slices/orderSlice';
-import { selectPizzaSizes } from '../redux/slices/menuSlice'; // Import pizza sizes selector
+import { selectPizzaSizes } from '../redux/slices/menuSlice'; 
 import { imgUrl } from '../config';
-import Grid from '@mui/material/Grid'; // Import Grid from MUI
+import Grid from '@mui/material/Grid'; 
+
+import './OrderManagementPage.css'; // Import the CSS file
 
 const OrderManagementPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const orders = useSelector(selectAllOrders);
-  const pizzaSizes = useSelector(selectPizzaSizes); // Get pizza sizes from Redux
+  const pizzaSizes = useSelector(selectPizzaSizes); 
 
   const handleNavigateToOrderDetails = (orderId) => {
     navigate(`/order-details/${orderId}`);
   };
 
   return (
-    <Container style={{ flexGrow: 1, minHeight: '100vh', padding: '20px', direction: 'rtl', backgroundColor: '#f0f0f0', marginTop: '60px' }}>
+    <Container className="order-management-container">
       <Typography variant="h3" component="div" gutterBottom textAlign="center">
         ניהול הזמנות
       </Typography>
@@ -36,56 +37,36 @@ const OrderManagementPage = () => {
           אין הזמנות במערכת
         </Typography>
       ) : (
-        <List sx={{ width: '100%', maxWidth: 1000, bgcolor: 'background.paper', margin: 'auto' }}>
+        <List className="order-list">
           {orders.map((order) => (
             <React.Fragment key={order.id}>
               <ListItem
                 alignItems="flex-start"
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row', // Place items in a row
-                  alignItems: 'center', // Align items vertically centered
-                  padding: '10px', // Reduce padding
-                  marginBottom: '10px', // Reduce margin between items
-                  maxWidth: '800px', // Set a maximum width for each order
-                  margin: 'auto'
-                }}
+                className="order-list-item"
               >
                 <IconButton
-  aria-label="view"
-  onClick={() => handleNavigateToOrderDetails(order.id)}
-  sx={{ 
-    width: '100px', // Adjust width
-    height: '100px', // Adjust height
-    marginLeft: '40px'
-  }}
->
-  <VisibilityIcon sx={{ fontSize: '40px' }} /> {/* Inherit the size from IconButton */}
-</IconButton>
+                  aria-label="view"
+                  onClick={() => handleNavigateToOrderDetails(order.id)}
+                  className="view-button"
+                >
+                  <VisibilityIcon className="view-icon" />
+                </IconButton>
 
-                <Box sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" sx={{ marginBottom: '5px' }}>{order.customerName}</Typography>
-                  <Grid container spacing={2} alignItems="center">
+                <Box className="order-info">
+                  <Typography variant="h6" className="customer-name">{order.customerName}</Typography>
+                  <Grid container spacing={2}>
                     {order.pizzas.map((pizza) => {
-                      const pizzaSize = pizzaSizes.find(p => p.id === pizza.idSelectedPizza); // Find pizza size
+                      const pizzaSize = pizzaSizes.find(p => p.id === pizza.idSelectedPizza); 
                       return (
-                        <Grid item xs={12} sm={6} md={4} lg={3} key={pizza.id} sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}>
-                          <Avatar alt="Pizza" src={`${imgUrl}/${pizzaSize ? pizzaSize.image : 'default-pizza.jpg'}`} sx={{ width: 100, height: 80 }} />
-                          <Box sx={{ marginLeft: '10px', display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px' }}>
-                            <Box sx={{ marginRight: '20px', marginLeft:'80px' }}>
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={pizza.id}>
+                          <Box className="pizza-card">
+                            <Avatar alt="Pizza" src={`${imgUrl}/${pizzaSize ? pizzaSize.image : 'default-pizza.jpg'}`} className="pizza-image" />
+                            <Box className="pizza-details">
                               <Typography variant="body2" color="text.primary">
-                                גודל:
+                                גודל: {pizzaSize ? pizzaSize.size : 'לא זמין'}
                               </Typography>
                               <Typography variant="body2" color="text.primary">
-                                {pizzaSize ? pizzaSize.size : 'לא זמין'}
-                              </Typography>
-                            </Box>
-                            <Box>
-                              <Typography variant="body2" color="text.primary" display={'10px'}>
-                                כמות:
-                              </Typography>
-                              <Typography variant="body2" color="text.primary">
-                                {pizza.quantity}
+                                כמות: {pizza.quantity}
                               </Typography>
                             </Box>
                           </Box>

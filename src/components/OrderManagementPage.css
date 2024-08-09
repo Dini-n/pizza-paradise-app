@@ -1,0 +1,63 @@
+.order-management-container {
+    flex-grow: 1;
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
+    background-color: #f0f0f0;
+    margin-top: 60px;
+  }
+  
+  .order-list {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    margin: auto;
+  }
+  
+  .order-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .view-button {
+    width: 100px;
+    height: 100px;
+    margin-left: 40px;
+  }
+  
+  .view-icon {
+    font-size: 40px;
+  }
+  
+  .order-info {
+    flex-grow: 1;
+  }
+  
+  .customer-name {
+    margin-bottom: 5px;
+  }
+  
+  .pizza-card {
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+  }
+  
+  .pizza-image {
+    width: 100px;
+    height: 80px;
+  }
+  
+  .pizza-details {
+    margin-left: 10px;
+  }
+  

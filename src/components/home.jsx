@@ -3,74 +3,38 @@ import { useSelector } from 'react-redux';
 import { Typography, Container, Box, Card, CardMedia, CardContent, Button } from '@mui/material';
 import { selectPizzaSizes } from '../redux/slices/menuSlice';
 import { imgUrl } from '../config';
+import './Home.css'; // Import the CSS file
 
 const HomePage = () => {
   const pizzas = useSelector(selectPizzaSizes); // Get pizza sizes from Redux
 
   return (
-    <Container style={{ padding: '20px', direction: 'rtl', backgroundColor: '#f0f0f0' }}>
-      <Box
-        sx={{
-          position: 'relative',
-          textAlign: 'center',
-          marginBottom: '40px',
-        }}
-      >
+    <Container className="container">
+      <Box className="header-box">
         <Box
           component="img"
           src={`${imgUrl}/פיצה.jpg`}
           alt="Pizza Background"
-          sx={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: '20px',
-            objectFit: 'cover',
-          }}
+          className="header-image"
         />
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%',
-            maxWidth: '1000px', // Ensure text width does not exceed image width
-            zIndex: 1,
-          }}
-        >
+        <Box className="header-text-box">
           <Typography
             variant="h2"
             component="div"
             gutterBottom
-            sx={{
-              color: '#fff',
-              padding: '20px',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background for better readability
-              borderRadius: '20px',
-              display: 'inline-block',
-              width: '100%',
-            }}
+            className="header-text"
           >
             ברוכים הבאים לפיצריה שלנו!
           </Typography>
         </Box>
       </Box>
 
-      <Box
-        sx={{
-          textAlign: 'center',
-          marginTop: '20px',
-        }}
-      >
+      <Box className="introduction-box">
         <Typography
           variant="h4"
           component="div"
           gutterBottom
-          sx={{
-            color: '#333',
-            padding: '10px',
-            display: 'inline-block',
-          }}
+          className="introduction-title"
         >
           גלו את הפיצות המיוחדות שלנו
         </Typography>
@@ -78,12 +42,7 @@ const HomePage = () => {
           variant="body1"
           component="div"
           paragraph
-          sx={{
-            color: '#333',
-            padding: '10px',
-            maxWidth: '600px',
-            margin: '20px auto',
-          }}
+          className="introduction-description"
         >
           אנחנו מציעים מגוון פיצות טעימות, עם תוספות לבחירתכם, עשויות מהמרכיבים הטריים ביותר.
           עיינו בתפריט שלנו, בחרו את הפיצה שאתם אוהבים ותיהנו מחוויה קולינרית שאין כמותה.
@@ -92,45 +51,24 @@ const HomePage = () => {
           variant="contained"
           color="secondary"
           href="/order"
-          sx={{
-            marginTop: '20px',
-            backgroundColor: '#e64a19', // Example dark color
-            color: '#fff',
-            borderRadius: '10px',
-            padding: '10px 20px',
-            textTransform: 'none',
-            '&:hover': {
-              backgroundColor: '#d84315',
-            },
-          }}
+          className="order-button"
         >
           הזמינו עכשיו
         </Button>
       </Box>
 
-      <Box
-        sx={{
-          padding: '40px',
-          borderRadius: '20px',
-          textAlign: 'center',
-          backgroundColor: '#fff',
-          marginTop: '40px',
-        }}
-      >
+      <Box className="pizza-section">
         <Typography
           variant="h2"
           component="div"
           gutterBottom
-          sx={{
-            marginBottom: '20px',
-            color: '#333',
-          }}
+          className="pizza-section-title"
         >
           הפיצות שלנו
         </Typography>
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '20px', overflowX: 'auto' }}>
+        <Box className="pizza-card-container">
           {pizzas.map(pizza => (
-            <Card key={pizza.id} sx={{ maxWidth: 345 }}>
+            <Card key={pizza.id} className="pizza-card">
               <CardMedia
                 component="img"
                 height="140"

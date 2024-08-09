@@ -1,4 +1,3 @@
-// src/pages/OrderDetailsPage.js
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -13,6 +12,7 @@ import { approveOrder, selectAllOrders } from '../redux/slices/orderSlice';
 import { Container, Button } from '@mui/material';
 import { imgUrl } from '../config';
 import { selectToppings, selectPizzaSizes, selectPriceToping } from '../redux/slices/menuSlice';
+import './OrderDetailsPage.css'; // Import the CSS file
 
 const OrderDetailsPage = () => {
   const { id } = useParams();
@@ -59,8 +59,8 @@ const OrderDetailsPage = () => {
 
   if (!order) {
     return (
-      <Container style={{ flexGrow: 1, direction: 'rtl', marginTop: '60px', minHeight: '100vh', padding: '20px', backgroundColor: '#f0f0f0' }}>
-        <Typography variant="h6" color="text.primary" sx={{ textAlign: 'center' }}>
+      <Container className="container">
+        <Typography variant="h6" color="text.primary" className="page-title">
           ההזמנה לא נמצאה
         </Typography>
       </Container>
@@ -68,17 +68,17 @@ const OrderDetailsPage = () => {
   }
 
   return (
-    <Container style={{ flexGrow: 1, direction: 'rtl', marginTop: '60px', minHeight: '100vh', padding: '20px', backgroundColor: '#f0f0f0' }}>
-      <Typography variant="h3" component="div" gutterBottom sx={{ textAlign: 'center' }}>
+    <Container className="container">
+      <Typography variant="h3" component="div" gutterBottom className="page-title">
         פרטי הזמנה
       </Typography>
-      <Typography variant="h6" component="div" gutterBottom sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" component="div" gutterBottom className="customer-info">
         שם הלקוח: {order.customer.name}
       </Typography>
-      <Typography variant="h6" component="div" gutterBottom sx={{ textAlign: 'center' }}>
+      <Typography variant="h6" component="div" gutterBottom className="customer-info">
         כתובת הלקוח: {order.customer.address}
       </Typography>
-      <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
+      <Box className="order-price">
         <Typography variant="h6" color="text.primary">
           מחיר כולל להזמנה ₪{order.price}
         </Typography>
@@ -88,35 +88,35 @@ const OrderDetailsPage = () => {
         const pizzaSize = pizzaSizes.find(p => p.id === pizza.idSelectedPizza);
 
         return (
-          <Box key={pizza.id} sx={{ marginBottom: '40px' }}>
+          <Box key={pizza.id} className="pizza-details">
             <Grid container spacing={2} justifyContent="center" alignItems="flex-start">
               <Grid item xs={12} sm={6} md={4} lg={3}>
-                <Typography variant="h6" component="div" sx={{ marginBottom: '10px' }}>
+                <Typography variant="h6" component="div" className="pizza-info">
                   פיצה: {pizzaSize ? pizzaSize.size : pizza.size}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <Avatar sx={{ width: 150, height: 120 }} alt="Pizza" src={`${imgUrl}/${pizzaSize ? pizzaSize.image : pizza.image}`} />
-                  <Typography variant="body2" color="text.primary" sx={{ marginTop: '10px' }}>
+                  <Avatar className="pizza-avatar" alt="Pizza" src={`${imgUrl}/${pizzaSize ? pizzaSize.image : pizza.image}`} />
+                  <Typography variant="body2" color="text.primary" className="pizza-quantity">
                     כמות: {pizza.quantity}
                   </Typography>
                 </Box>
               </Grid>
               <Grid item xs={12} sm={6} md={4} lg={3}>
-                <Typography variant="h6" color="text.primary" sx={{ marginBottom: '10px', textAlign: 'center' }}>
+                <Typography variant="h6" color="text.primary" className="pizza-info">
                   תוספות:
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                   {pizza.toppings.map((toppingId) => {
                     const topping = toppings.find(t => t.id === toppingId);
                     return topping ? (
-                      <Card key={toppingId} sx={{ maxWidth: 200, marginBottom: '10px' }}>
+                      <Card key={toppingId} className="topping-card">
                         <CardContent>
                           <Avatar
                             alt={topping.name}
                             src={`${imgUrl}/${topping.image}`}
-                            sx={{ width: 80, height: 70, margin: 'auto' }}
+                            className="topping-avatar"
                           />
-                          <Typography variant="body2" color="text.primary" sx={{ textAlign: 'center' }}>
+                          <Typography variant="body2" color="text.primary">
                             {topping.name}
                           </Typography>
                         </CardContent>
@@ -130,18 +130,13 @@ const OrderDetailsPage = () => {
           </Box>
         );
       })}
-      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-        <Box sx={{ display: 'flex', gap: '10px' }}>
+      <Box className="button-container">
+        <Box className="button-group">
           <Button
             variant="contained"
             color="secondary"
             onClick={handleBack}
-            sx={{ 
-              backgroundColor: '#ffb74d', 
-              '&:hover': { 
-                backgroundColor: '#ff9800' 
-              } 
-            }}
+            className="button"
           >
             חזרה
           </Button>
@@ -149,12 +144,7 @@ const OrderDetailsPage = () => {
             variant="contained"
             color="secondary"
             onClick={handleApprove}
-            sx={{ 
-              backgroundColor: '#ffb74d', 
-              '&:hover': { 
-                backgroundColor: '#ff9800' 
-              } 
-            }}
+            className="button"
           >
             אישור הזמנה
           </Button>

@@ -4,9 +4,9 @@ import OrderPage from './components/OrderPage';
 import PizzaEditPage from './components/PizzaEditPage';
 import OrderManagementPage from './components/OrderManagementPage';
 import OrderDetailsPage from './components/OrderDetailsPage';
-import HomePage from './components/home';
 
 import Navbar from './Navbar/Navbar';
+import HomePage from './components/home';
 
 function App() {
   return (

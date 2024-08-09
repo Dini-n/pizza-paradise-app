@@ -78,7 +78,11 @@ const OrderPage = () => {
       setSnackbarOpen(true);
       return;
     }
-
+    if (pizzas.length === 0) {
+      setErrorMessage('עליך לבחור לפחות פיצה אחת.');
+      setSnackbarOpen(true);
+      return;
+    }
     if (window.confirm("האם אתה בטוח שאתה רוצה לשלוח את ההזמנה?")) {
       let totalPrice = 0;
 
@@ -118,7 +122,7 @@ const OrderPage = () => {
         </Typography>
       </Box>
 
-      <Box mb={4}>
+      <Box mb={4} sx={{textAlign:'right'}}>
         <Typography
           variant="h5"
           component="div"
@@ -148,7 +152,10 @@ const OrderPage = () => {
                 }, 
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': { 
                   borderColor: '#e64a19' 
-                } 
+                },
+                '& input': {
+                  textAlign: 'right' // Align the text inside the input field to the right
+                }
               } 
             }}
           />
@@ -156,7 +163,6 @@ const OrderPage = () => {
             label="כתובת"
             variant="outlined"
             fullWidth
-            textAlign='right'
             value={customerAddress}
             onChange={(e) => setCustomerAddress(e.target.value)}
             onBlur={() => dispatch(updateCustomerInfo({ name: customerName, address: customerAddress }))}
@@ -164,7 +170,7 @@ const OrderPage = () => {
               marginBottom: '20px', 
               '& .MuiInputLabel-root': { 
                 color: '#333', 
-                textAlign: 'center',
+                textAlign: 'right', direction: 'rtl' 
               }, 
               '& .MuiOutlinedInput-root': { 
                 borderColor: '#e64a19',
@@ -173,7 +179,10 @@ const OrderPage = () => {
                 }, 
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': { 
                   borderColor: '#e64a19' 
-                } 
+                },
+                '& input': {
+                  textAlign: 'right' // Align the text inside the input field to the right
+                }
               } 
             }}
           />
@@ -210,7 +219,7 @@ const OrderPage = () => {
           שלח הזמנה
         </Button>
       </Box>
-
+      {pizzas.length > 0 && (
       <List sx={{ width: '100%', maxWidth: 600, bgcolor: 'background.paper' }}>
         {pizzas.map((pizza) => {
           const pizzaSize = getPizzaSizeById(pizza.idSelectedPizza); // Get the pizza size by id
@@ -224,10 +233,10 @@ const OrderPage = () => {
                   alt={pizzaSize.name || 'Pizza'}
                   sx={{ width: '100px', marginRight: '20px' }}
                 />
-                <ListItemText
+                <ListItemText 
                   primary={`פיצה: ${pizzaSize.size}, כמות: ${pizza.quantity}`}
                   secondary={`מחיר: ₪${handleGetPriceToPizza(pizza, pizzaSize)}, תוספות:`}
-                  sx={{ textAlign: 'right' }} // Align text to the right
+                  sx={{ textAlign: 'right' ,padding:'30px'}} // Align text to the right
                 />
                 <Box>
                   {pizza.toppings.map((toppingId) => {
@@ -241,30 +250,31 @@ const OrderPage = () => {
                           alt={topping.name || 'Topping'}
                           sx={{ width: '40px', marginRight: '10px' }}
                         />
-                        <Typography variant="body2" sx={{ textAlign: 'right' }}>{topping.name || 'Topping'}</Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{padding:'30px'}}>
+                          {topping.name}
+                        </Typography>
                       </Box>
                     );
                   })}
                 </Box>
                 <IconButton
-                  onClick={() => handleEditPizza(pizza)}
+                  edge="end"
                   aria-label="edit"
+                  onClick={() => handleEditPizza(pizza)}
+                  sx={{ marginLeft: 'auto' }}
                 >
                   <EditIcon />
                 </IconButton>
               </ListItem>
-              <Divider variant="inset" component="li" />
+              <Divider />
             </React.Fragment>
           );
         })}
       </List>
-
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <Alert onClose={handleSnackbarClose} severity="error">
+      )}
+      
+      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
+        <Alert onClose={handleSnackbarClose} severity="error" sx={{ width: '100%' }}>
           {errorMessage}
         </Alert>
       </Snackbar>

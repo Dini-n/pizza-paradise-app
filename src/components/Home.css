@@ -1,0 +1,102 @@
+.container {
+    /* padding: 20px;
+    direction: rtl;
+    background-color: #f0f0f0;
+    min-height: 100vh;   */
+
+    max-width:1500px;
+    flex-grow: 1;
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
+    background-color: #f0f0f0;
+    margin-top: 60px;
+  }
+  
+  .header-box {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+  }
+  
+  .header-text-box {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1000px; /* Ensure text width does not exceed image width */
+    z-index: 1;
+  }
+  
+  .header-text {
+    color: #fff;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+    border-radius: 20px;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .introduction-box {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .introduction-title {
+    color: #333;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .introduction-description {
+    color: #333;
+    padding: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .order-button {
+    margin-top: 20px;
+    background-color: #e64a19 !important; /* Example dark color */
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-transform: none;
+  }
+  
+  .order-button:hover {
+    background-color: #d84315 !important;
+  }
+  
+  .pizza-section {
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 40px;
+  }
+  
+  .pizza-section-title {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .pizza-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+  }
+  
+  .pizza-card {
+    max-width: 345px;
+  }
+  
