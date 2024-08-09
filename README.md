@@ -1,70 +1,63 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Pizza Paradise
 
-In the project directory, you can run:
+Welcome to **Pizza Paradise**, your ultimate pizza ordering and management system! This platform provides a seamless experience for customizing and managing pizza orders.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Custom Orders**: Personalize your pizza with various sizes and toppings.
+2. **Order Management**: Manage and track orders easily with our intuitive interface.
+3. **Customer Details**: Store and update customer information effortlessly.
+4. **Responsive Design**: Fully responsive design for an optimal experience on any device.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+![image](https://github.com/user-attachments/assets/9c89097f-c8a2-46b6-9070-4f2927ad3fde)
+![image](https://github.com/user-attachments/assets/c2d9a13f-14ce-48c4-89b5-7cd14200a408)
+![image](https://github.com/user-attachments/assets/1ce7c422-5f68-456a-aebe-61e9bb643425)
+![image](https://github.com/user-attachments/assets/b4acc754-81a7-47b3-85aa-f534a73fd63a)
+![image](https://github.com/user-attachments/assets/57cdd7b8-3600-46ac-aadc-499d82e35f0e)
+![image](https://github.com/user-attachments/assets/c26ddfd6-4fdb-4a37-910b-de44ef7549e1)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to set up the project locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the Repository**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/Dini-n/pizza-paradise-app.git
+Navigate to the Project Directory
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+cd pizza-paradise
+2. **Install Dependencies**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ensure you have Node.js and npm installed. Then run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ npm install
+3.**Install Material-UI**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install the core and icon packages for Material-UI:
 
-## Learn More
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+4. **Start the Development Server**
+npm start
+The application will be available at http://localhost:3000.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Build for Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To create a production build:
 
-### Code Splitting
+npm run build
+This will generate optimized files in the build directory.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Usage
+Add Pizza: Navigate to the "Order Page" and use the "Add Pizza" button to customize your orders.
+Manage Orders: Access the management interface to view and edit orders.
+View Details: Click the "View" button to see detailed information about each order.
+License
+This project is licensed under the MIT License. See the LICENSE file for more information.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
